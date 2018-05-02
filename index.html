@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-debug.js"></script>
     </head>
@@ -362,10 +362,10 @@
     <script> 
         var Model = function() {
            var self = this;
-           self.birthYear = ko.observable();
-           self.birthMonth = ko.observable();
-           self.birthDay = ko.observable();
-           self.name = ko.observable();
+           self.birthYear = ko.observable( localStorage.getItem("birthYear") );
+           self.birthMonth = ko.observable( localStorage.getItem("birthMonth") );
+           self.birthDay = ko.observable( localStorage.getItem("birthDay") );
+           self.name = ko.observable( localStorage.getItem("name") || '' );
            self.eventYear = ko.observable(new Date().getFullYear());
            self.eventMonth = ko.observable(new Date().getMonth()+1);
            self.eventDay = ko.observable(new Date().getDate());
@@ -373,7 +373,7 @@
 
            self.reduceDigits = function( num ) {
                 var sum = 0;
-                num.toString().split('').forEach( function(c) { sum += parseInt(c) } );
+                (num || '').toString().split('').forEach( function(c) { sum += parseInt(c) } );
                 while( sum > 10 ) 
                     sum = self.reduceDigits( sum );
                 return sum;
@@ -389,6 +389,12 @@
                 var sum = self.reduceDigits( self.name().replace(/\s/g, "").length );
                 sum += self.innerUrgency();
                 sum = self.reduceDigits(sum);
+
+                localStorage.setItem("birthYear", self.birthYear());
+                localStorage.setItem("birthMonth", self.birthMonth());
+                localStorage.setItem("birthDay", self.birthDay());
+                localStorage.setItem("name", self.name());
+
                 return sum;
            }  );
 
