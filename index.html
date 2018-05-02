@@ -362,10 +362,10 @@
     <script> 
         var Model = function() {
            var self = this;
-           self.birthYear = ko.observable(1967);
-           self.birthMonth = ko.observable(4);
-           self.birthDay = ko.observable(2);
-           self.name = ko.observable('Jeffrey and Judith');
+           self.birthYear = ko.observable();
+           self.birthMonth = ko.observable();
+           self.birthDay = ko.observable();
+           self.name = ko.observable();
            self.eventYear = ko.observable(new Date().getFullYear());
            self.eventMonth = ko.observable(new Date().getMonth()+1);
            self.eventDay = ko.observable(new Date().getDate());
