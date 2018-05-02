@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+        <div>V 0.0.1</div>
     </body>
     <script type="text/html" id="arcanum-template">
         <p>Arcanum <span data-bind='text: arcanum'></span></p>
@@ -374,7 +375,7 @@
            self.reduceDigits = function( num ) {
                 var sum = 0;
                 (num || '').toString().split('').forEach( function(c) { sum += parseInt(c) } );
-                while( sum > 10 ) 
+                while( sum >= 10 ) 
                     sum = self.reduceDigits( sum );
                 return sum;
            }
