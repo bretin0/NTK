@@ -1,0 +1,411 @@
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-debug.js"></script>
+    </head>
+    <style>
+        body { font-family: 'Oxygen Mono', serif; font-size: 15px;}
+        .button {border: 1px solid black; border-radius: 4px; text-decoration: none; padding:4px; color: black;}
+        .input {border: 1px solid black; border-radius: 4px; text-decoration: none; padding:4px; color: black;}
+        input::-webkit-inner-spin-button {-webkit-appearance: none;}
+    </style>
+    <body>
+        <div style='text-align: left; margin: 30px;'>
+            <div>
+                <div class='cell' style='width: 48%; display: inline-block;'>
+                    You: 
+                    <input type="number" min=1900 max=2100 step=1 class="input" style='width: 70px' placeholder="Birth Year" data-bind="value: birthYear, valueUpdate: 'afterkeydown'"/>  
+                    <input type="number" min=1 max=12 step=1 class="input" style='width: 45px' placeholder="Month" data-bind="value: birthMonth, valueUpdate: 'afterkeydown'"/>  
+                    <input type="number" min=1 max=31 step=1 class="input" style='width: 45px' placeholder="Day" data-bind="value: birthDay, valueUpdate: 'afterkeydown'"/>  
+                    <input type="text" class="input" placeholder="Full Name" style='width: 150px' data-bind="value: name, valueUpdate: 'afterkeydown'"/>  
+                </div>
+                <div class='cell' style='width: 48%; display: inline-block; margin-left: 2%;'>
+                    Event: 
+                    <input type="number" min=1900 max=2100 step=1 class="input" style='width: 70px' placeholder="Event Year" data-bind="value: eventYear, valueUpdate: 'afterkeydown'"/>  
+                    <input type="number" min=1 max=12 step=1 class="input" style='width: 45px' placeholder="Month" data-bind="value: eventMonth, valueUpdate: 'afterkeydown'"/>  
+                    <input type="number" min=1 max=31 step=1 class="input" style='width: 45px' placeholder="Day" data-bind="value: eventDay, valueUpdate: 'afterkeydown'"/>  
+                    <input type="number" min=0 max=23 step=1 class="input" style='width: 45px' placeholder="Hour" data-bind="value: eventHour, valueUpdate: 'afterkeydown'"/>  
+                </div>
+            </div>
+            <div>
+                <div style="width: 48%; display: inline-block; vertical-align: top;">
+                    <h3>Your Fundamental Key Note</h3>
+                    <div data-bind="template: { name: 'arcanum-template', data: {arcanum: fundamentalKeyNote()} }"></div>
+                </div>
+                <div style="width: 48%; display: inline-block; ; vertical-align: top; margin-left: 2%;">
+                    <h3>Event Indication</h3>
+                    <div data-bind="template: { name: 'arcanum-template', data: {arcanum: eventKeyNote()} }"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/html" id="arcanum-template">
+        <p>Arcanum <span data-bind='text: arcanum'></span></p>
+        <div data-bind='if: arcanum == 1'>
+            <p>THE MAGICIAN</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>The eyes in the upper part represent the eyes of the Father, signifying internally the
+            infinite, the Holy Eight, the Caduceus of Mercury, the eight Kabirs who direct the planet.  The Magician is shown 
+            in right-side profile, meaning that for the manifested, the right side is all.  The Serpent protrudes from his brow,
+            indicating that he is arisen, that he is a Self-Realised Master. The Staff of Power, which symbolises the spinal 
+            column is in the left hand which points toward the infinite, whilst the right points toward the earth, indicating 
+            that he dominates it with science, that one must ascend from below, that one cannot ascend without first descending. 
+            One needs to descend to the Ninth Sphere, which has two representations. The first is sex, the Cubical Stone; the 
+            second is the nine circles, the Atomic Infernos into which the Initiate has to descend; meaning to descend in order 
+            to ascend.</p>
+            <p>Upon his garment is a triangle with the apex facing upwards. This represents the three primary forces reunited in 
+            Kether, the ONE (1). To one side there is a table, which represents the four elements (earth, air, fire and water), 
+            the physical plane.  Upon the tableone finds various elements in a state of disorder: the Sword of Power, the Lingam 
+            (male sexual organ); the Chalice, representing the physical cerebrum and on the other hand, the Yoni (female sexual 
+            organ) and a Moon which must be converted into a Sun.<p>
+            <p>Beneath the table one finds the immortal Ibis, the Phoenix bird, the Kala Hansa Swan, theHoly Spirit which symbolises
+            Love. It is beneath the table, indicating that it is by meansof the Sacred Fire of the Third Logos that we have to order 
+            the disordered elements uponthe table.  In the lower part of the card, in the Waters of Life, we find the Cubical Stone. 
+            The already worked Philosophical Stone indicates that this is the Work which we must realise.  This is the Cubical Stone
+            of Jesod, the sex, Stumbling Block and Rock of Scandal.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM<p>
+            <p>One can divide the esoteric study of the Tarot into two parts; 
+            the esoteric and themathematic. The first consists of 22 Arcana; after this begin the advances via mathematics.</p>
+            <p>Arcanum number 1 is the Magician, that which initiates, which begins; the 1. It is Unity, the Divine Spirit of 
+            each person, the Monad or Immortal Spark of each human being, of each living creature. The One is the mother of 
+            all unities. The One unfolds to become that which is the fol lowing Arcanum, the Priestess.</p>  
+            <p>In Arcanum 1 we 
+            enter the Sanctum Regnum of magic; above the head one sees the Holy Eight represented by two eyes it is the 
+            symbol of the infinite, representing the eight Kabirs, the symbol of life and of death.</p>
+            <p>In the centre of the Earth,
+            in the Ninth Sphere one finds this sacred symbol of the infinite.All organisms revolve around this symbol, just as
+            within the human body of one who wishes to Self-Realise there is al ways an eternal struggle: “brain against sex”, 
+            “sex against brain against heart”. If sex dominates brain it leads to the fall and the Pentagram(representing the 
+            Master) rests with the lower extremities facing upwards and the headfacing downwards.</p>
+            <p>The Holy Eight is a very 
+            important and interesting symbol within which is enclosed, defined and linked the magnetic currents which are set 
+            up between the earthly man and the spiritual. This sign unites or separates all the elements ruled by atomic energy 
+            if onetraces it with the thumb, middle and index fingers upon the surface of the cardiac plexus.</p>
+        </div> 
+        <div data-bind='if: arcanum == 2'>
+            <p>THE PRIESTESS</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In the Waters of Life the two columns of the Temple of Isis are shown; the white, Jakinand the black, Boaz. 
+            Each one has four levels indicating the Four Bodies of Sin; Physical,Vital, Astral and Mental. Above, a female 
+            Master appears seated between two larger columns. She is within a temple and is facing us; for this reason the 
+            columns are reversed.  he fact that she is seated indicates to us her passive aspect. In Arcanum number 1 the
+            Magician is standing; the active aspect. She is showing her left profile, her negative aspect</p>
+            <p>In her lap there is a half-opened book, which she partially covers with her shawl. This indicates that she is 
+            Wisdom, that she teaches the Kabbalah.  Upon her chest is the Crux Ansata, the symbol of life, of the fundament, 
+            Venus, the Tao Cross. The cross upon hernaked breast signifies that its product, the Milk, are the Virtues.</p>
+            <p>The serpent upon her brow indicates Mastery; that she is arisen.</p>
+            <p>Above her head are the horns of the Sacred Bull Apis, husband of the Divine Cow.  Internally the horns signify 
+            the Father, and externally, the “psychological I” (our defects).  We also find the attributes of the Little Calf, 
+            or Kabir. The circle is the Serpent which bites its tail, representing the Cosmic Mother, the Sacred Cow. The veil 
+            which covers herface is the veil of Isis.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>Arcanum number 2 is the Priestess, Occult Science. In the region of the Spirit, the One isthe Father who is in 
+            Secret, the Two is the Divine Mother who is the Unfoldment of the Father.</p>
+            <p>The Sacred Book of the Maya, the Popol Vuh, states that God created man first from clayand later from wood 
+            (the Atlantean race) but that they forgot their Fathers and Mothers,they forgot “The Heart of Heaven”.</p>
+            <p>Then came the great flood and all perished; they took refuge in caves and these collapsed(this is a referenc
+            to the submersion of Atlantis). Each one of us has his Father and his Mother who are very sacred. In the Father 
+            and in Mother Kundalini we see the twocolumns Jakin and Boaz; it is they, which support the Temple</p>
+            <p>The Hebrew letter Beth expresses the dualism of the two columns of the temple. Jakin is the right-hand column, 
+            which is white, the man, the masculine principle and Boaz the black left- hand column, the woman, the feminine 
+            principle. Between the two columns ‘J’and ‘B’ is the Great Arcanum. It is precisely this which many masonic brothers 
+            do notunderstand. The Cubical Stone in its crude state is located between the two columns, and once worked it becomes
+            the Cubical Stone of Jesod; this is none other than Sex, the sephiroth Jesod. One must know the Arcanum, the Maithuna, 
+            which is represented by theChisel of Intelligence and the Mallet of Will</p>
+            <p>The ineffable words of the Goddess Neith have been carved in letters of gold upon the resplendent walls of the 
+            Temple of Wisdom: “I am all that has been, is, and will be, andno mortal has raised my veil.”</p>
+            <p>The veil symbolises that the secrets of Mother Nature are hidden to the profane and that it is only the Initiate, 
+            after incessant purifications and meditations who can draw it back.</p>
+            <p>You must have valour and raise the veil of Isis, our Gnostic motto is Thelema (will-power).</p>
+            <p>The number 1, the Father who is in Secret, is the Eternal Masculine Principle, in himself Brahma; who has no form, 
+            is impersonal, ineffable. We may symbolise him with the Sun</p>
+            <p>The number 2, the Divine Mother, is the Eternal Feminine Principle which is symbolisedby the Moon. Brahma has no 
+            form but is, in Himself, the governor of the universe, is Ishvara, the Eternal Masculine Principle, the Universal 
+            Principle of Life</p>
+            <p>The Universal Principle of Life overflows into the Eternal Feminine Universal Principle which is the Great Pralaya 
+            of the universe, of the Cosmos, fecund womb of which all isborn and to which all returns.</p>
+            <p>The Cosmic Mother in the human being takes the form of a Serpent. There are two serpents; the Tempting Serpent of
+            Eden is that of the Goddess Kali, of the abominable Kundartiguador Organ; and the Serpent of Bronze which cured the 
+            Israelites in the desert, the Serpent Kundalini.  They are the two Feminine Principles of the universe; the Virgin 
+            and the Whore; the Divine Mother or White Moon and the Black Moon referring to Astaroth, Kali, the tenebrous aspect.</p>
+            <p>Arcanum number 2 is the Priestess, in occultism said to be the Dual Manifestation of Oneness. The Unity unfolds 
+            giving origin to receptive and productive femininity in all ofnature. Clearly, within the human organism is the 
+            number 2. This is related with then umber 1, Will, and with the number 2, Imagination</p>
+            <p>One must distinguish between Intentional Imagination and Mechanical Imagination; obviously Mechanical Imagination
+            is the same as Fantasy. The key of power rests in uniting Will and Imagination in Vibrant Harmony</p>
+            <p>There is a key for travelling in the astral body which is very swift; upon awakening fromnormal sleep, one closes 
+            the eyes without moving, and with the eyes closed one vividly imagines any place (but do not imagine that you are 
+            imagining). It must be translated into fact. If you feel completely sure of being in the imagined place, Will and 
+            Imagination arethus united and it is logical that this Union being attained, the result will be Triumph. Put 
+            the Imagination into play, take a walk in the place that you are imagining with “faith”.</p>
+            <p>If one does this practice and attains the interplay of Will and Imagination (which is feminine), without moving 
+            in bed, maintaining sleep and imagining the place, putting into activity the Will, and with decision getting up from 
+            the bed, one will then be able togo wherever one wishes. On one occasion I found myself in a wood and whilst going
+            along a track, I was told about a mountain. Because it was a dangerous place, I went to investigate it in Astral. 
+            I imagined the mountain, I saw mist, some steps, and a group ofadepts. On entering that place they gave me a spoonful 
+            of bees honey, the food of the White Lodge, and the Bread of Wisdom. Later I was told that I would be purged 
+            with castor oil to cleanse my stomach. The next day I went out of the body whose stomach had been cleansed. I saw 
+            the stars, and practised the Rune MAN: the adepts commanded meto descend to the Worlds of the Infernos. I entered 
+            the region of profound darkness where I was attacked by terrible beasts. They were my “I's” - I had to go through 
+            doors that Icould barely pass, along narrow paths, and from here I went out through a cemetery. All that which is 
+            of the ego is death and misfortune; it is Mephistopheles. One must workvery hard</p>
+        </div>
+        <div data-bind='if: arcanum == 3'>
+            <p>THE EMPRESS</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In the centre there is a woman crowned with twelve stars (1 + 2 = 3), which representsthe 12 zodiacal signs, the 12 doors of the Holy City the 12 keys of Basil Valentine, the 12worlds of the Solar System of Ors. Upon her head there is a vessel, and arising from it aSerpent, symbol of Mastery indicating that she is arisen. In her right hand is the Staff ofPower, and with her left she reaches out to the dove which represents the Holy Spirit. Herapparel is Solar, all indicating that she is the Christified Soul, product of the arcananumbers 1 and 2. She is seated upon the now perfectly worked Cubical Stone.</p>
+            <p>In the waters of life the Moon is beneath her feet, indicating that one must trample upon itin order to convert it into Sun.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>ARCANUMThe number 3 is the Empress, the Divine Light, the light itself; it is the Divine Mother. Itrelates to that part of Genesis which says: “And God said: Let there be light: and therewas light.” (Genesis 1.3) from the first day of creation</p>
+            <p>It is also the number of the Third Logos which dominates every form of creation; it is therhythm of the Creator</p>
+            <p>The Celestial Mother in the material sphere signifies material output, and in the spiritualsphere means spiritual output</p>
+            <p>If one makes a more profound analysis, one discovers a most interesting aspect; thenumber 1 is the Father who is in Secret, the Monad, and it is from here that the Divine WeorMother Kundalini, the Dyad is born. She in turn unfolds into the number 3 which isFather, Mother and Son which is the Divine and Immortal Spirit in each living thing. Thethree, Osiris the Father, Isis the Mother and Horus the Son form that which the SacredBook of the Maya, the Popul Vuh, calls the “Heart of Heaven”. The Son in turn unfoldsinto the Animic Soul which each one carries within.</p>
+            <p>The Zohar, the oldest Hebrew book and basis of the Kabalah and the Old Testament,insists upon three initial elements which comprise the world. These elements are:</p>
+            <p>Shin — which means Fire in the Kabalah</p>
+            <p>Mem — which means Water</p>
+            <p>Aleph — which means Air</p>
+            <p>These 3 primary elements are the perfect synthesis of all that is, of the 4 manifestedelements</p>
+            <p>The Serpent or Saviour Logos, inspires man in order that he may recognise his identitywith the Logos and thus return to his own Essence which is that Logos</p>
+            <p>The magical power of the triangle of the Initial Elements is summarised in the powerful mantram: I.A.O. I-Ignis-Fire, A-Aqua-Water, O-Origo-Beginning, Spirit, Air</p>
+            <p>This mantram should always be part of the Mystery Schools</p>
+            <p>What we are seeing here is the esotericism of the Holy 3. The I.A.O. is the fundamentalmantram of the Maithuna; it is within the Ninth Sphere that it must resound. He whowants to raise the soul of the world along the spinal colunm must work with Sulphur(fire), with Mercury (water), and with Salt (philosophical earth)</p>
+            <p>These are the 3 elements, the 3 principles for working in the Fiery Forge of Vulcan</p>
+            <p>In Basil Valentine’s manuscript Azoth, the secret of the Great Work is found. The 12secret keys are the sexual energy of the Logos when the Rose of the Spirit flowers uponthe cross of our body.</p>
+            <p>The 3 principal elements are the 3 Hebrew letters which correspond to the 3 principalelements within the Great Work of nature. In this way we produce living gold. He whodoes not make Spiritual Gold is not an esotericist. One descends to the Ninth Sphere andfabricates it in the Fiery Forge of Vulcan</p>
+            <p>The Kabalist-Alchemist must learn to use Sulphur, Mercury and Salt</p>
+            <p>By using Sulphur in the shoes the larvae of the Astral Body and the Incubii and Succubiiwhich are formed through the erotic imagination are de stroyed. They are transparent likethe air and absorb the vitality of the Being. In the cinemas, iniquitous dens of BlackMagic, which screen morbid films, they act here to one, and one has to use sulphur inone’s shoes, and with this the larvae are destroyed. By burning sulphur on pieces ofcarbon, harmful thought forms and the larvae within a room are destroyed. Mercuryserves to prepare “Lustral Water” in the bottom of a copper receptacle filled with water(this should not be a pan or dish) place mercury and a mirror. This is used to awakenclairvoyance. Nostradamus’ divinations were made with copper and mercury</p>
+            <p>Salt has its virtues; one can light a fire in a receptacle containing a mixture of salt andalcohol to invoke the Masters of Medicine, Adonai, Hippocrates, Galen, and Paracelsus,when someone who is ill needs to be cured</p>
+            <p>The ternary, the number 3 is very important. It is the Word, Plenitude, Fecundity Nature,the Generation of the Three Worlds</p>
+            <p>The Arcanum number 3 of the Kabalah is the woman robed with the Sun with the Moonat her feet, and crowned with 12 stars. The symbol of the Queen of Heaven is theEmpress of the Tarot, a mysterious crowned woman, seated, and with the Sceptre of Rulewhich has upon its extremity, the globe of the World. This is Urania-Venus of theGreeks, the Christified Soul, the Celestial Mother</p>
+            <p>The Divine Mother, Arcanum number 3, is the Particular Mother of each one of us, is theMother of our Being who must trample the Moon, the lunar ego in order for the 12 Stars,the 12 Faculties, to shine resplendently upon her brow</p>
+            <p>The 3 Primary forces which come from above, from the Father and which exist in allcreation are necessary in order to create Positive, Negative, and Neutral forces.</p>
+            <p>Man is Arcanum number 1 of the Tarot, the Positive Force. Woman is Arcanum number2, the Negative Force, and the Christified Soul is the result of the sexual union of the two.The secret is the Arcanum A.Z.F. which transforms the Moon into Sun and represents 3aspects: Positive, Negative, Neutral</p>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+        <div data-bind='if: arcanum == 4'>
+            <p>THE EMPEROR</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>From the forehead of the Emperor projects the Serpent, symbol of Mas tery. The crown,formed of an asp - Thermuthis - belongs to Isis, our Particular Divine Mother Kundalini.Upon his head is a hat with 4 points, 4 angles, representing the 4 elements, the 4 gospels,the 4 vedas etc. The hat also represents the alembic, the receptacle, the sexual organs, thestove, the Muladhara Chakra, the spinal column, and the still, the brain. In his right handhe sustains the Staff of Power. He is seated upon the perfectly worked Cubical Stone, aproduct of the previous arcana. Within the Stone is the cat, the fire. In the waters of life isfound the Staff of Power, the vertebral colunm</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>The Cross has 4 points. The Cross of Initiation is phallic; the insertion of the vertical phallus in the feminine ectasia forms the Cross. It is the Cross of Initiation which wemust take upon our shoulders</p>
+            <p>We must understand that with its 4 points it symbolises the 4 cardinal points of the Earth:North, South, East and West; the 4 ages: gold, silver, copper and iron; the 4 seasons ofthe year, the 4 phases of the Moon, the 4 paths: science, philosophy, art and religion. Inspeaking of the 4 paths, we should understand that they are all really only one; this is thestrait and narrow Path of the Razor’s Edge, the Path of the Revolution of Con sciousness.The Cross is a very ancient symbol, having been employed since the beginning in allreligions, amongst all peoples, and it would be errone ous to consider it the exclusiveemblem of one or another religious sect. When the Spanish Conquistadors reached theholy land of the Aztec they found the cross upon their altars</p>
+            <p>The Sign of the Cross, the sublime monogram of Christ our Lord, the Cross of SaintAndrew and the miraculous key of Saint Peter, are marvellous replicas which are of equalalchemistic and kabalistic value. It is then, the sign which can assure victory to those wholabour in the Great Work</p>
+            <p>The sexual Cross, the living symbol of the crossing of the Lingam-Yoni, has theunmistakable and marvellous mark of the 3 keys employed to immolate the Christ-Matter, a reflection of the 3 purifications by iron and by fire, without which Our Lordwould not have been able to achieve the Resurrection</p>
+            <p>The Cross is an ancient hieroglyphic which is alchemical, from crucible (creuset), whichin the French was previously cruzel, crucible, croiset. In Latin, crucibulum (crucible), hadas its root crux, cruxis, (cross). All this clearly invites us to reflect</p>
+            <p>It is in the crucible where the materia prima of the Great Work suffers with infinitepatience the passion of the Lord. In the Erotic Crucible of sexual alchemy the “ego” diesand the “Phoenix Bird” is reborn from amongst the self same ashes: INRI, “In NecisRenascor Integer”; “In death reborn pure and intact”.</p>
+            <p>The placing of the vertical phallus within the horizontal uterus forms a Cross; this issomething which anyone may verify</p>
+            <p>If we reflect very seriously on that intimate relationship which exists between the “S” andthe “TAU”, Cross or “T”, we arrive at the logical conclusion that it is only by means ofthe crossing of the“Lingam-Yoni”(phallus- uterus) with the utter exclusion ofphysiological orgasm, that we can awaken “Kundalini”, the Igneous Serpent of ourMagical Powers</p>
+            <p>In the Nahuatl and Maya conc eption of things the Sacred“Swastika” of the GreatMysteries was always defined by the cross in movement; which is the Nahuatl “Nahui-ollin”, the sacred symbol of Cosmic Movement. The two possible directions of theSwastika clearly represent the masculine and feminine, positive and negative principlesof nature. Two Swastikas, one in each direction and perfectly superimposed form withoutdoubt the Cross Potent, and represent in this sense, the erotic conjunc tion of the sexes</p>
+            <p>According to the Aztec legend it was a couple, a man and a woman who invented Fire;this is only possible with the Cross in movement: INRI; “Ignis Natura RenovaturIntegra” “Fire incessantly renews nature”.</p>
+            <p>The Cross also reveals the “Quadrature of the Circle”, the key of per-petual motion. That perpetual motion is only possible by means of the sexual force of the Third Logos. If theenergy of the Third Logos stopped flowing in the universe, perpetual motion would ceaseand there would be a cosmic breakdown. The Third Logos organises the fundamentalvortex of all that is born in the universe and the infinitesimal vertex of the very last atomof any creation</p>
+            <p>With Arcanum four of the Tarot the Being takes upon his shoulders the Cross ofInitiation</p>
+            <p>If we make the following kabalistic addition of Arcanum 4: 1 + 2 + 3 + 4 = 10, wediscover that 10 1 + 0 = 1; the Monad. TETRAGRAMMATON is the same as the Monad.</p>
+            <p></p>
+            <p></p>
+        </div>
+        <div data-bind='if: arcanum == 5'>
+            <p>THE HIERARCH</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In this card we find the Hierarch wearing his chain mail armour, sup porting to the rightthe Staff of Power. The jackal mask he uses only when he is officiating, when he isadministering Justice; it symbolises the Supreme Piety and Supreme Impiety of the Law.</p>
+            <p>In the waters of life one finds the Balance of Justice, indicating that the movements,actions and reactions of the physical body are based in en ergy.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>The number 5 is grandiose, sublime; it is the number of the rigour of the Law, it is thenumber of Mars and of war.</p>
+            <p>Arcanum number 5 of the Tarot indicates the Teaching, Karma and the Explanation to us.It symbolises the fifth cycle, the fifth race, the fifth sun, the five tattwas, the five fingers,the five gospels, the five senses, the five cells of the cerebrum and the ovary, and the fiveaspects of the Divine Mother.</p>
+            <p>Card number 5 of the Tarot is Initiation, Demonstration, Teaching, Karmic Law,Philosophy, Science, Art. We live in the Age of Samael, the fifth of the seven; the Returnto the Great Light has been initiated. Life has be gun to flow from the external inwards;we are faced with the dilemma of To Be or Not To Be; we need to define ourselves asangels or demons, as eagles or as reptiles; to confront our own destiny.</p>
+            <p>WeorArcanum number 5 is the Hierophant, the Law, rigour. It is the Pentagram ablaze, theFlaming Star the sign of Divine omnipotence, this is the ineffable symbol of the Verbmade flesh, the awe- inspiring bright star of the Wise Men.</p>
+            <p>Man is represented by the Pentagram; man the microcosmos, who with arms and legsextended, is the Five-Pointed Star</p>
+            <p>The Pentagram with the two points facing upwards represents Satan, and is used in blackmagic to invoke the tenebrous. When the top angle is facing uppermost, it represents theInternal Christ of each man who comes to this world; it symbolises the divine, and is usedin White Magic to call divine beings. If it is placed in the doorway with the two feetfacing outwards, tenebrous entities will not enter. On the other hand, the invertedPentagram, having the feet facing inwards, allows the tenebrous to enter.</p>
+            <p>In the upper angle of the Pentagram we find the eyes of the Spirit and the sign of Jupiter,Sacred Father of the Gods. Upon the arms is the sign of Mars, the symbol of force. Uponthe feet, the sign of Saturn, the symbol of Magic. In the centre is the symbol of occultphilosophy, the Caduceus of Mercury, and the sign of Venus. The Caduceus of Mercuryrepresents the Vertebral Colunm, and the two wings, the ascent of the Sacred Fire alongthe vertebral column, thus opening the 7 Churches of the Apocalypse of Saint John (the 7Chakras) by means of scientific chastity. The chalice, symbol of the feminine Yoni, alsorepresents the crystallised mind, containing the wine of light which semenises the brain.The sword is the masculine phallus. We also find the key and the pentacle of Solomon.</p>
+            <p>TETRAGRAMMATON is a mantram of immense priestly power</p>
+            <p>In accordance with transfinite mathematics, Infinity + Infinity = Pentalpha.  8 + 8 = 5</p>
+            <p>Students can prepare an electrum to protect themselves from the tenebrous. In occultism,the Pentagram made with the 7 metals of the 7 planets is called an electrum.</p>
+            <p>Silver - Moon</p>
+            <p>Mercury - Mercury</p>
+            <p>Copper - Venus</p>
+            <p>Gold - Sun</p>
+            <p>Iron - Mars</p>
+            <p>Tin - Jupiter</p>
+            <p>Lead - Satur</p>
+            <p>One makes the Pentagram and consecrates it with the 4 elements: Fire, Air, Earth andWater; perfumes it with 5 perfumes: Frankincense, Myrrh, Aloes, Sulphur and Camphor</p>
+            <p>These 5 substances serve to consecrate the Pentagram; the first 3 to invoke the White, thesulphur to repel tenebrous entities, and the camphor to perfume and attract success. Onemust learn to handle these substances. The 4 letters, Iod-He-Vau-He, must be placed uponthe Pentagram and it should be worn at the neck, thus giving us extraordinary protection</p>
+            <p>During the consecration one insufflates 5 breaths, the Christonic Real Being of theInternal Master appearing for the consecration of the Pentalpha, and the 5 Archangels,Gabriel, Raphael, Samael, Anael and Orifiel are invoked</p>
+            <p>If we are able to prepare a metallic Pentagram and consecrate it, so too we can consecrateourselves with the same rites and perfumes we utilised for our metallic Pentagram,because man is a Star with 5 points</p>
+            <p>All they who feel themselves to be unclean, with larvae, or in misery, must utilise the 5perfumes to perfume themselves, this is on the condition that they follow the Path ofPerfect Chastity. In the Lumisials [Gnostics Churches] the custom of cleansing thosebrothers who feel themselves to be covered in larvae should be established. In this waytheir souls and their bodies will receive the benefits.</p>
+            <p>In the “Book of the Dead”, chapter LIX, the victor Nu says: “I am the Jackal of Jackals,and I obtain air in the presence of the God of Light and I convey it to the limits of thefirmament, and to the confines of the Earth, and to the frontiers of the extremities of flightof the bird Neveh. Thus air may be granted to those young Divine Beings.”</p>
+            <p>The Hierarch of Arcanum number 5, the Jackal of Jackals is the head of the Archons ofDestiny. He is Anubis, the Jackal-headed God.</p>
+            <p>The Temple of Anubis is the Temple of the Lords of Karma. Anubis con trols the booksof Karma in the underworld. Each human being has his book of accounts.</p>
+            <p>They who learn to control their Ka (the astral body), can visit the temple of the Jackal ofJackals in order to consult their book and conduct their transactions.</p>
+            <p>Credit may also be solicited from the Lords of Karma. All credit must be paid for, byworking in the Great Work of the Father, or suffering the unspeakable. When the Logosof the Solar System awarded me the tunic and mantle of a Hierophant of MajorMysteries, he said to me:“I here with pay you that which I owe you for the practiceswhich you have taught.”</p>
+            <p>He who wants light must give light in order to receive his payment.</p>
+            <p>The Jackal of Jackals conducts the light to the very limits of the firma ment, reachingeven to the frontiers of the bird Neveh, the enormous Serpent, one of the 42 judges ofMAAT in the tribunal. This great judge is the Logos of the Solar System. The Jackal ofJackals works under the command of this great judge.</p>
+            <p>These young divine beings who work with Anubis are the Lords of Karma.</p>
+            <p>The Alchemist must learn to manage his KA in order to visit the temple of the Jackal ofJackals and put his accounts in order.</p>
+            <p>In our work with the Blessed Stone it is indispensable to consciously manage our dealings.</p>
+            <p>None can escape Justice due to the existence in the depths of our con science of the KAOM, the Police of Karma, which takes form each time it registers a positive ornegative action.</p>
+        </div>
+        <div data-bind='if: arcanum == 6'>
+            <p>INDECISION</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>One finds the disciple standing in the waters of life in front of a triangle with the vertex pointing downwards. His left arm is crossed over the right. All of the above signifies thatthe disciple is fallen; that he feels a greater attraction towards Medusa (the‘I’) who is located to his left. To his right one finds a female Master</p>
+            <p>This Arcanum is called Indecision because the disciple does not know which path todecide upon.</p>
+            <p>Seated in the upper part is a Hierarch of the Law with a bow taking the form of a trianglewith the vertex pointing upwards. He points his ar row at the head of the Medusa, inkeeping with the axiom: “The Medusa must be decapitated”.</p>
+            <p>Each figure presents to the neophyte a different path. The path of the left and the path ofthe right. The arrow of Justice points against the path of the left.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>The Arcanum six is the Lover of the Tarot, signifying Realisation. The human being isfound between vice and virtue, the Virgin, the Whore, Urania-Venus and the Medusa.One finds that one has to choose one Path or the other.</p>
+            <p>Arcanum 6 is concatenation, equilibrium, loving union of man and woman; terriblestruggle between love and desire. Here we find the mysteries of the Lingam-Yoni; this isthe linking together.</p>
+            <p>The struggle between the two ternaries is in Arcanum number 6. This is the affirmation ofthe Internal Christ and the supreme negation of Satan. Arcanum number 6 is the strugglebetween the Spirit and the bestial. Number 6 represents the struggle between God and theDevil. This Arcanum is expressed in the Seal of Solomon. The upper triangle representsKether, Chochmah and Binah; the resplendent Dragon of Wisdom (Father, Son and HolySpirit). The lower triangle represents the three traitors, who form the antithesis of thedivine triad. They are the de mons of desire, of the mind, and of ill- will. From moment tomoment they betray the Internal Christ, and are the bases of the ego (Judas, Caiaphas andPilate). This lower triangle is the Black Dragon.</p>
+        </div>
+        <div data-bind='if: arcanum == 7'>
+            <p>TRIUMPH</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In this card two sphinx, a black and a white appear in the waters of life. They pull achariot, and represent the masculine and feminine forces. A warrior who represents theIntimus is standing in his chariot of war, within the Cubical Stone (sex), and between the4 pillars which are Science, Art, Philosophy and Religion, in which he develops. The 4pillars also represent the 4 elements, indicating that he dominates them.</p>
+            <p>In his right hand is the Flaming Sword, and in his left, the Staff of Power. The cuirass isthe Divine science which makes us powerful. The warrior must learn to use the Staff andthe Sword; in this way he will attain the great victory.</p>
+            <p>On his head is a hat with 3 peaks, representing the 3 primary forces. In the upper part Ra,the Cosmic Christ appears (the wings).</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>Arcanum number 7 represents the 7 notes of the Lyre of Orpheus, the 7 musical notes, the7 colours of the solar prism, the 7 planets, the 7 vices which we must transmute into the 7virtues, the 7 Sidereal Genii, the 7 bodies, the 7 dimensions, the 7 grades of power of theFire, the 7 secret words spoken by the Solar Logos (of Calvary), etc.</p>
+            <p>Arcanum number 7 is the chariot of war which the Monad has formed in order tomanifest in this world, with power to work in this sphere of life. It is the Monad realised,manifesting through his7 bodies. From another perspective7 is struggles, battles,difficulties; but he is always victorious despite the battles.</p>
+            <p>The Father who is in Secret, or the Divine Monad is immortal, omniscient, but withoutSeIf-Realisation. He is unable to rule the physical, does not have sovereignty over theElements. It seems incredible that we, such miserable worms, “Have to make the Fatherpowerful” it seems blasphemous ; but “He” has to Self- Realise.</p>
+            <p>A Realised Monad is powerful, having power over the fire, the air, water and earth.</p>
+            <p>This is why in the Egyptian Book of the Dead, the devotee says to Horus: “I strengthenyour legs and your arms”. In turn the devotee begs that He should strengthen his ThreeBrains (intellectual, emotional and motor) because Horns needs the devotee to have threestrong brains.</p>
+            <p>In Egyptian Theogony the Father (Father, Son and Holy Spirit) is Osiris or Ra; and Ra isthe Logos with its thr ee aspects. When the Monad is spoken of, it is Osiris who is beingreferred to; it is He who has to Self- Realise, and in turn unfold into Father, Mother andSon. The Son unfolds into the Essence, which is that which swallows us, leaving the Self-Realised Monad.</p>
+            <p>ESSENCE ----> SON -----> MOTHER ------> FATHER</p>
+            <p>When speaking with my Monad, he said to me: “I am SeIf-Realising you what I am doingis for you”.</p>
+            <p>To put it another way, what are we living for? There is an objective the Monad wants toSelf- Realise, and for this reason we are here.</p>
+        </div>
+        <div data-bind='if: arcanum == 8'>
+            <p>JUSTICE</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In the waters of life of this Arcanum the Serpent is shown biting its own tail, forming thesign of the Cosmic Mother, the Infinite (0, zero).</p>
+            <p>One finds a woman kneeling upon a tumulus with 3 steps which represents the ArcanumA.Z.F. (waters plus fire equals consciousness).</p>
+            <p>In her left hand the woman holds the Sword of Power pointing upwards, and with herother hand balances the scales, indicating that a balance must exist between the mind,heart and sex. Ra appears in the upper part of the card, (this is the other symbol for Raapart from the wings).</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>Arcanum number 8 is Judgement. The 8 is the number of Job; tests and sufferings. Theesoteric sense of this is represented by a sword.</p>
+            <p>The number 8 is the number of the Infinite. The vital forces of the Fire of Phlegethon andthe Water of Acheron circulate, intertwining in the Ninth Sphere in the heart of the Earthin the form of an eight. The sign of the Infinite is also formed within the spinal column.The sign of the Infinite means to work in the Ninth Sphere, and this indicates the sex.</p>
+            <p>Arcanum number 8 is a woman with a sword in her hand before the Balance of CosmicJustice. Really only she can present the Sword to the Magician. Without woman noMagician is able to receive the Sword. There is Eve-Venus the instinctive woman,Venus-Eve the woman of the home. There is Venus-Urania, the woman initiated in the Great Mysteries. And finally we affirm the existence of Urania-Venus, the WomanAdept, the woman who is the fully realised woman.</p>
+            <p>The woman of Arcanum number 8 of the Tarot has the Balance in one hand and theSword in the other. It is necessary to balance the forces, it is urgent and necessary tosanctify ourselves absolutely and practice the Arcanum A.Z.F; the forces of man andwoman are balanced in love and in wisdom.</p>
+            <p>The miraculous ascent of the seminal energy to the brain is made possible due to a certainpair of nerve filaments which, in the form of an eight, extend to the left and right of thevertebral column.</p>
+            <p>In Chinese philosophy this pair of filaments is known by the classic names of “Yin” and“Yang”, being the “Tao” the Path of the Middle Way, the Medullar Channel, the secretway by which the Serpent ascends.</p>
+            <p>Obviously the first of these two channels is of a Lunar nature, whilst the second isostensibly of a Solar type.</p>
+            <p>When the Lunar and Solar atoms make contact with the triveni near the coccyx, theIgneous Serpent of our Magical Powers awakens.</p>
+            <p>The Serpent which forms the figure of a circle, in that Gnostic trance of devouring itsown tail, is an extraordinary synthesis of that marvellous message of Lord Quetzalcoatl.In the vertical position it illustrates the Maya or Nahuatl idea of the Divine Viperdevouring the Soul and Spirit of man, or finally the sexual flames consuming the animalego, annihi lating it, reducing it to ashes.</p>
+            <p>The Serpent is unquestionably the esoteric symbol of wisdom and occult knowledge. TheSerpent has been related with the God of Wisdom since ancient times.</p>
+            <p>The Serpent is the sacred symbol of Thoth, and of all the other Holy Gods such asHermes, Serapis, Jesus, Quetzalcoatl, Buddha, Tlaloc, Dante, Zoroaster, Bochica etc.,etc., etc.</p>
+            <p>Any Adept of the Universal White Fraternity may correctly be represented by the “GreatSerpent”; that which occupies such a prominent position amongst the symbols of theGods which appear upon the black stones of the buildings of Babylon.</p>
+            <p>AEsculapius, Pluto, Esmun, Kneph, are all, according to Dupuis, deities with theattributes of the serpent. All are healers, givers of spiritual and physical health and of illumination.</p>
+            <p>The Brahmins obtained their cosmogony, science and cultural arts from the famous “Naga-Maya” who were later called “Danavas”. The 
+            “Naga” and the Brahmin used the sacred symbol of the Plumed Serpent, an in disputably Mexican and Mayan emblem. The Upanishads contain a treatise on the Science 
+            of Serpents, or, that which is the same, the Science of occult knowledge.</p>
+            <p>The “Nagas” (Serpents) of esoteric Buddhism are Real Men, perfect, Self- Realised, byvirtue of their occult knowledge and protectorship of the law of Buddha by means ofwhich they correctly interpret his metaphysi cal doctrine.</p>
+            <p>The Great Kabir Jesus of Nazareth would never have advised his disci pies that theyshould be wise like the Serpent if it had been a symbol of evil. We would do well toreme mber the Ophites, the Gnostic Egyptian sages of the “Fraternity of the Serpent”. Intheir ceremonies they would never have made a live snake an object of adoration, beingthe emblem of Wisdom, Divine Sophia, if that reptile had been associated with thepowers of evil.</p>
+            <p>The Sacred Serpent or Saviour Logos sleeps coiled within the depths of the Ark,mystically lying in wait; awaiting the instant of being awak ened. Kundalini, the IgneousSerpent of our Magical Powers, coiled within the magnetic centre of the coccyx (the baseof the spinal column) shines like a bolt of lightning.</p>
+            <p>They who study Nahuatl or Hindu esoteric physiology stress the transcendental conceptof a marvellous magnetic centre located at the base of the vertebral column halfwaybetween the anal orifice and the sexual organs.</p>
+            <p>In the centre of the “Muladhara Chakra” there is a yellow square which is invisible to thephysical eyes but perceptible by means of clairvoyance or the sixth sense. According tothe Hindu, this square represents the earth element.</p>
+            <p>It has been said that within that yellow square there is a “Yoni” or “Uterus”, and thatwithin the middle of this one finds a “Lingam” or erotic “Phallus” around which is foundcoiled the Serpent; the mysterious psychic energy called Kundalini.</p>
+            <p>The esoteric structure of this magnetic centre, together with its unusual location betweenthe sexual organs and the anus, provide a solid irrefu table basis to the Tantric schools ofIndia and Tibet.</p>
+            <p>It is, unquestionably, only by means of the Sahaja Maithuna or Sexual Magic that theSerpent can be awakened.</p>
+            <p>The crown formed of an Asp, the Thermuthis, belongs to Isis, she is our particular andindividual Divine Mother Kundalini, because each one of us has our own.</p>
+            <p>The Serpent as the feminine Deity within us is the wife of the Holy Spirit; our VirginMother weeping at the foot of the Sexual Cross, her heart pierced by 7 daggers.</p>
+            <p>The Serpent of the Great Mysteries is indubitably the feminine aspect of the Logos, Godthe Mother, the wife of Shiva. She is Isis, Adeonia, Tonantzin, Rhea, Mary, or better said, Ram-IO. She is Cibeles, Opis, Dero, Flora, Paula, IO, Akka, the Great Mother inSanskrit. She is the Goddess of the Lha, Lares or spirits from here below, the anguishedmother of Huitzilopochtli, Aka or the Turkish White Goddess, the Chalcidean Minerva ofthe Initiatic Mysteries, the Aka-Boizub of the Lunar Temple of Chichen-Itza (Yucatan)etc, etc.</p>
+        </div>
+        <div data-bind='if: arcanum == 9'>
+            <p>THE HERMIT</p>
+            <p>DESCRIPTION OF THE CARD</p>
+            <p>In this Arcanum we find in the waters of life a rising Moon. In the middle section, anaged Hermit in the act of going forward, holding in his left hand the lamp which lightsthe path. It is the lamp of Hermes, Wisdom. The Staff of the Patriarchs which is in hisright hand, supports him. This represents the spinal colunm with its Seven Churches.</p>
+            <p>The wise and prudent Hermit is wrapped in the Protective Mantle of Apollonius whichsymbolises Prudence. Behind him one sees the Palm of Victory.</p>
+            <p>In the upper part is a Sun which illuminates with three rays, indicating the Three PrimaryForces. It descends to unite with the Moon. The Moon rises and the Sun descends, whichindicates that we need to transform the Moon into Sun by means of transmutation; toconvert the lunar bodies into Solar bodies by means of the Arcanum A.Z.F.</p>
+            <p>Arcanum number 9 clearly indicates the 9 circles of the Atomic Infernos of Nature andthe 9 spheres of the 9 Heavens. This Arcanum also indicates the 9 planets represented inthe 9 spheres of the planet Earth.</p>
+            <p>The Initiate has to descend to the 9 submerged spheres in order to later attain the 9Heavens which correspond to each planet.</p>
+            <p>ESOTERIC MEANING OF THE ARCANUM</p>
+            <p>Arcanum number 9 is the Hermit, Solitude. This Arcanum in its more elevated form isthe Ninth Sphere, “Sex”.</p>
+            <p>In the ancient Temples the descent to the Ninth Sphere was the greatest test of the supreme dignity of the Hierophant. Hermes, Buddha, Jesus Christ, Zoroaster, Dante, andmany other great Initiates had to pass through the Great Test; descend to the NinthSphere to wo rk with the Fire and the Water, origin of worlds, beasts, men and Gods.Every true White Initiation begins there.</p>
+            <p>In the Ninth Sphere or ninth stratum of the Earth, in the centre of the Earth, in the veryheart of the Earth, the resplendent sign of the Infinite is found. This sign has the form ofan eight. The sign of the Infinite is the Holy Eight. The Heart, Brain and Sex of the Genieof the Earth is represented in this sign. The secret name of the Genie is Changam.</p>
+            <p>The Zohar clearly tells us that in the depth of the Abyss lives Adam Protoplastos, thedifferentiating principle of Souls. We have to pit our selves against that principle in afight to the death. The battle is terrible; Brain against Sex, Sex against Brain and thatwhich is most terrible and most painful; that of Heart against Heart.</p>
+            <p>Obviously all the forces in the human being revolve upon the base of the Holy Eight. Hewho wants to enter the City of Nine Doors mentioned in the Bhagavad-Gita must resolveto descend to the Fiery Forge of Vulcan.</p>
+            <p>In the human organism the Ninth Sphere is sex, he who wants to Self-Realise mustdescend to the Ninth Sphere to work with the Water and the Fire to reach the Second Birth.</p>
+            <p>In the Ninth Sphere the Fiery Forge of Vulcan (sex) is found. It is there that Marsdescends to re-temper his flaming sword and conquer the heart of Venus (the VenusticInitiation). Hercules descends to clean the stables of Augeas (the lower animal depths)and Perseus, to cut off the head of Medusa (the psychological “I”, or earthly Adam) withhis flaming sword. It is that head covered with serpents that the esoteric student has to deliver to Minerva, the Goddess of Wisdom.</p>
+            <p>The foetus remains “nine” months in the maternal womb; and “nine” ages are necessaryin the womb of Rhea, Tonantzin, Cibeles, in other words, Mother Nature, in order for aPlanetary Humanity to be born. So too, it is obvious that we have to descend to the“Ninth Sphere” in order to gestate and achieve that Second Birth.</p>
+            <p>Jesus said to Nicodemus: “It is necessary that you be born again in order to be able toenter the Kingdom of Heaven...” (John 3). This means to create the Solar Bodies; no-onecan enter the Kingdom dressed in lunar rags. The Solar Bodies have to be created, andthis is only achieved by transmuting the Creative Energy. In Egyptian theogony thoseSolar Bodies are represented by the Egyptian Sahu. No-one has the right to sit at the table OF the Angels if he is not dressed in the Solar Bodies. We have to create the To SomaHeliakon, the Body of Gold of the Solar Man.</p>
+            <p>It is written: “Narrow is the way which leads to the light”. He who wants to follow thepath must: “Deny himself, take up his Cross and follow me.” (The three factors for theRevolution of Consciousness; to Die, to be Born, and Sacrifice).</p>
+            <p>He who wants to Self- Realise must be prepared to renounce all: wealth, honours, peace,prestige; must give his own blood.</p>
+            <p>One must have a Centre of Gravity, a Permanent Centre of Conscious ness. We are nomore than machines controlled by our“I’s”(the ego is plural). We are in adisadvantageous position which means we need super-efforts, and need to kill the “I”.That “I” is Mephistopheles; is the root of all our suffering and pain; it lives according toits own conditioning. We must reduce it to cosmic dust in order to have awakenedconsciousness, in order to be able to see the Path.</p>
+            <p>To “know”, means to See, Hear and Sense the Great Realities.</p>
+            <p>There is a need to understand what the “Depths of the Abyss” means. When it is said“descend to the Depths of the Abyss”, this is real. Due to the Law of concomitance orrelationship, the descent to the Ninth Sphere puts us in accord with the PlanetaryOrganism on which we live. He who is working in the Ninth Sphere has descended to thedepths of what he really is. If he who is working disincarnates he will see that he is reallyliving in that Region (the Ninth Sphere is in the centre of the Earth). Of course he whohas awakened consciousness will be the one who is aware of this. It is necessary to advisethe Neophyte that in the Ninth Sphere exists the “Supreme Pain” about which Dantespoke in the “Divine Comedy”; the condemned whose tears have coagulated in their eyes,and others about whom the Waters have risen to their Creative Organs.</p>
+            <p>You must know how to understand, you must know to learn how to suffer, to be resigned;those who do no t, fail. It is a kind of insolence, a paradox, to want to find happiness inthe Ninth Sphere. It would be absurd, because the fact is that Intimate Self- Realisationcosts, has a price, perhaps life itself.</p>
+            <p>Was not Hiram Abiff assassinated and sought by “27 Masters”? This added kabalisticallyis: 2 + 7 = 9.</p>
+            <p>There is great pam in the Ninth Sphere until one finally reaches the Second Birth.</p>
+            <p>When Jesus said to Nicodemus that he had to be born again he did not understand. Jesusof course knew the Great Mystery. Will there come a time when one leaves the NinthSphere? Yes, when the Second Birth is achieved</p>
+            <p>After having created the “To Soma Heliakon” in the “Forge of Cyclops” (sex), I had thento spend a period of time in profound reflection. In the residence of Love, in the Temple of the“Twice-Born”, I met other Brothers and Sisters who had also been workingintensely in the “Fiery Forge of Vulcan” (sex). They were all gloriously radiant amongstthe indescribable divine enchantments of Good Friday. We came together to talk of thestruggles and hardships; we had been victorious. But all this how ever is only theBeginning of the Beginning, the Foundation of the Foundation; beyond this there issomething more, and it is necessary that you be informed.</p>
+            <p>If one who is Twice-born, or someone who has reached Adepthood, tries to reach theangelic state, he will have to descend once again into the deep well of the universe; to theNinth Sphere, and, on terminating the Work, to ascend via the Ladder, or Scale of Luciferin order to thus reach the Angelic state. If he should wish to be an Archangel, aPrincipality, a Throne, or a Cherubim he mus t do the same; descend in order to then ascend.</p>
+            <p>It is necessary to understand and differentiate between a Fall and a Descent. He who hasonce been decapitated, can not be recapitated. On the verge of entering the Absolute, onemust descend to the Ninth Sphere. If one reaches the Second Birth, sex is prohibited; sexis no longer used just because one may want to. If, however, one receives the order of theWhite Fraternity; the Sacred Order, or that of the Father who is in Secret, and one isordered to descend the well of the Abyss, one must obey. This is not pleasure, but pain,sacrifice.</p>
+            <p>By the Luciferic Ladder one must descend, and one must suffer. We need to becomeMasters of both the Superior and Inferior forces. The Father who is in Secret commandsthat which must be done; only upon receiving the order does one descend.</p>
+            <p>Only he who falls loses his Initiatic grades, not he who has descended. Orders arereceived upon conclusion of the Work. One now no longer makes use of sex capriciously.It is the Fathe r who is Lord of this Act; and it is the Father from whom the Order mustcome. Sex does not belong to oneself, but rather to the Father.</p>
+            <p>The Law of Leviathan is that of the Mason who has already passed all of the works orEsoteric Grades. Because he has already been decapitated he can not be recapitated. Hecan neither be harmed from above nor from below; he lives in keeping with the Law, theGreat Law. This is the higher wisdom of Esoteric Masonry.</p>
+            <p>Firstly one does one’s capricious will; later, one must do the Will of the Father. Whenone no longer has “Ego”, evil disappears, and one knows only how to do the Will of theFather. He is our true Being, is the Ancient of Days, is beyond Atman. When hecommands his orders must be carried out.</p>
+            <p>One is liberated from the Ninth Sphere when one becomes a Paramarthasattya (aninhabitant of the Absolute). Then one will be sub merged in Abstract Joy. Before goingthere however, there will be a humiliation; one needs to descend again, otherwise oneviolates the Law of Leviathan, the Seal of Solomon.</p>
+            <p>We also find the mysteries of the Ninth Sphere in the Apocalypse of the Holy Bible: “And I heard the number of them which were sealed: and there were sealed an hundredand forty and four thousand of all the tribes of the children of Israel.” (Apocalypse 7- 4).</p>
+            <p>By adding the numbers kabalistically we will obtain the number Nine, 1 + 4 + 4 = 9,which is the Ninth Sphere, sex. Only they who have attained absolute Chastity will besaved.</p>
+            <p>“And I looked, and lo, a Lamb stood on the Mount Sion, and with him an hundred fortyand four thousand, having their Father’s name written in their foreheads.” (Apocalypse14; 1-5).</p>
+            <p>Referring to the New Jerusalem, it is said: “And he measured the wall thereof, anhundred and forty and four cubits, according to the measure of a man, that is, of theangel.” (Apocalypse 21.17) 144 = 1 + 4 + 4 = 9, sex. The 9 is the measure of a man, thatis, of the angel. We remain nine months in the maternal womb. Only in the Ninth Spherecan the Son of Man be born. There has never been an angel who was not born in theNinth Sphere. He who wishes to cut off the head of Medusa (the “I”) must descend to theNinth Sphere.</p>
+            <p>Hewhowishes to incarnate the Christ must descend to the Ninth Sphere. He who wishesto dissolve the “I” must descend to the Ninth Sphere. The Ninth Sphere is the SanctumRegnum of Divine Omnipotence of the Third Logos. In the Ninth Sphere we find theFiery Forge of Vulcan</p>
+            <p>Every novice who works in the Great Work must support himself upon his staff, givelight with his own lamp, and wrap himself in his sacred mantle. Every novice must beprudent. If you wish to incarnate the Christ, be like the lemon. Flee from lust and alcohol.Kill the innermost roots of desire.</p>
+            <p>Esoteric students abound who mistakenly affirm that there are numer ous paths whichlead to God. However, the Divine Great Master Jesus said: “Because strait is the gate,and narrow is the way, which leadeth unto light, and few there be that find it” (Matthew7.14)</p>
+            <p>If the esoteric student patiently scrutinises all which comprises the four Gospels, he willbe able to prove for himself that Jesus never said that there were many paths.</p>
+            <p>The adorable Saviour of the World only spoke of one narrow door, and of one Path,narrow and difficult. And this door is sex! And this path is sex! There is no other path toGod. Never in all of Eternity has there been any Prophet who has known of any doorother than sex.</p>
+            <p>Some esoteric students who are mistaken, confused, and misguided object to theseteachings and affirm that Pythagoras, Zoroaster, Jesus and other Initiates were celibate,and supposedly never had wives.</p>
+            <p>In all the Temples of the Mysteries there were Sacred Vestals. Materialists, thedisrespectful, they who are bad- intentioned have arbitrarily sought to label them “sacredprostitutes”. These Vestals were, however, really Initiate Virgins; esoteric Virgins,although their bodies may no longer have been physiologically virgin.</p>
+            <p>The Initiates of the Temple, Pythagoras, Zoroaster, Jesus Christ, in fact all those ancientInitiates, without exception, really practised the Arcanum A.Z.F. with the Vestals of theTemple. Only within the Fiery Forge of Vulcan could those Great Initiates re-temper theirarms and conquer the Heart of Venus.</p>
+        </div>
+    </script>
+    <script> 
+        var Model = function() {
+           var self = this;
+           self.birthYear = ko.observable(1967);
+           self.birthMonth = ko.observable(4);
+           self.birthDay = ko.observable(2);
+           self.name = ko.observable('Jeffrey and Judith');
+           self.eventYear = ko.observable(new Date().getFullYear());
+           self.eventMonth = ko.observable(new Date().getMonth()+1);
+           self.eventDay = ko.observable(new Date().getDate());
+           self.eventHour = ko.observable(new Date().getHours());
+
+           self.reduceDigits = function( num ) {
+                var sum = 0;
+                num.toString().split('').forEach( function(c) { sum += parseInt(c) } );
+                while( sum > 10 ) 
+                    sum = self.reduceDigits( sum );
+                return sum;
+           }
+           self.innerUrgency = ko.computed( function(){
+                var sum = self.reduceDigits( self.birthYear() );
+                sum += self.birthMonth();
+                sum += self.birthDay();
+                sum = self.reduceDigits( sum );
+                return sum;
+           }  );
+           self.fundamentalKeyNote = ko.computed( function(){
+                var sum = self.reduceDigits( self.name().replace(/\s/g, "").length );
+                sum += self.innerUrgency();
+                sum = self.reduceDigits(sum);
+                return sum;
+           }  );
+
+           self.eventKeyNote = ko.computed( function() {
+                var sum = self.fundamentalKeyNote();
+                sum += self.reduceDigits( self.eventYear() );
+                sum += self.eventMonth();
+                sum += self.eventDay();
+                sum += self.eventHour();
+                sum = self.reduceDigits( sum );
+                return sum;
+           });
+
+           self.load = function() {
+           }
+           self.load();
+        };
+        ko.applyBindings( new Model() );
+    </script>
+</html>
